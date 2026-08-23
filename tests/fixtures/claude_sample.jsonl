@@ -1,0 +1,8 @@
+{"type":"mode","mode":"agent","timestamp":"2026-06-01T09:00:00.000Z"}
+{"type":"user","message":{"role":"user","content":"<local-command-caveat>Caveat: scaffolding text that must never become the title</local-command-caveat>"},"uuid":"u0","timestamp":"2026-06-01T08:59:59.000Z","cwd":"/tmp/sample-project","sessionId":"claude-sample-session","isMeta":true}
+{"type":"user","message":{"role":"user","content":"hello claude"},"uuid":"u1","timestamp":"2026-06-01T09:00:01.000Z","cwd":"/tmp/sample-project","sessionId":"claude-sample-session"}
+{"type":"assistant","message":{"role":"assistant","content":[{"type":"text","text":"hi there"},{"type":"tool_use","id":"t1","name":"Bash","input":{"command":"ls"}}]},"uuid":"a1","timestamp":"2026-06-01T09:00:05.000Z","cwd":"/tmp/sample-project","sessionId":"claude-sample-session"}
+{"type":"permission-mode","mode":"acceptEdits","timestamp":"2026-06-01T09:00:06.000Z"}
+THIS IS NOT VALID JSON AND SHOULD BE SKIPPED
+{"type":"user","message":{"role":"user","content":"thanks"},"uuid":"u2","timestamp":"2026-06-01T09:00:10.000Z","cwd":"/tmp/sample-project","sessionId":"claude-sample-session"}
+{"type":"ai-title","aiTitle":"Sample Claude session about greetings","sessionId":"claude-sample-session"}

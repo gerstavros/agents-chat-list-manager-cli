@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "metadata": {
+    "id": "codewhale-sample-session",
+    "title": "Sample codewhale session",
+    "created_at": "2026-06-03T11:00:00Z",
+    "updated_at": "2026-06-03T11:05:00Z",
+    "message_count": 2,
+    "total_tokens": 123,
+    "model": "deepseek-chat",
+    "model_provider": "deepseek",
+    "workspace": "/tmp/codewhale-sample-project",
+    "mode": "agent"
+  },
+  "messages": [
+    {"role": "user", "content": [{"type": "text", "text": "hello codewhale"}]},
+    {"role": "assistant", "content": [
+      {"type": "thinking", "thinking": "considering the greeting"},
+      {"type": "text", "text": "hi there"},
+      {"type": "tool_use", "id": "t1", "name": "exec_shell", "input": {"command": "echo hi"}}
+    ]}
+  ]
+}

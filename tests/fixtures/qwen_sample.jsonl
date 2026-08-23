@@ -1,0 +1,5 @@
+{"uuid":"u1","parentUuid":null,"sessionId":"qwen-sample-session","timestamp":"2026-06-02T10:00:00.000Z","type":"user","cwd":"/tmp/qwen-sample-project","version":"0.15.6","message":{"role":"user","parts":[{"text":"hello qwen"}]}}
+{"uuid":"s1","parentUuid":"u1","sessionId":"qwen-sample-session","timestamp":"2026-06-02T10:00:02.000Z","type":"system","subtype":"ui_telemetry","cwd":"/tmp/qwen-sample-project"}
+{"uuid":"a1","parentUuid":"u1","sessionId":"qwen-sample-session","timestamp":"2026-06-02T10:00:05.000Z","type":"assistant","cwd":"/tmp/qwen-sample-project","message":{"role":"model","parts":[{"thought":true,"text":"thinking about greeting"},{"text":"hi there"},{"functionCall":{"name":"read_file","args":{"path":"a.txt"}}}]},"usageMetadata":{"totalTokenCount":42}}
+NOT VALID JSON HERE
+{"uuid":"u2","parentUuid":"a1","sessionId":"qwen-sample-session","timestamp":"2026-06-02T10:00:10.000Z","type":"user","cwd":"/tmp/qwen-sample-project","message":{"role":"user","parts":[{"text":"thanks"}]}}

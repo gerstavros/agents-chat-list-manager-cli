@@ -1,0 +1,4 @@
+{"type":"user","message":{"role":"user","content":"how do I deploy this"},"uuid":"u1","timestamp":"2026-06-04T09:00:00.000Z","cwd":"/tmp/custom-title-project","sessionId":"claude-custom-title-session"}
+{"type":"assistant","message":{"role":"assistant","content":"here's how"},"uuid":"a1","timestamp":"2026-06-04T09:00:05.000Z","cwd":"/tmp/custom-title-project","sessionId":"claude-custom-title-session"}
+{"type":"ai-title","aiTitle":"Auto-generated deployment title","sessionId":"claude-custom-title-session"}
+{"type":"custom-title","customTitle":"my-renamed-session","sessionId":"claude-custom-title-session"}
