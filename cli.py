@@ -8,6 +8,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from core.claude_settings import ensure_claude_cleanup_period
 from core.config import AppConfig
 from core.export import export_conversation
 from core.models import ConversationMeta
@@ -268,6 +269,9 @@ def main(argv: list[str] | None = None) -> int:
 
     parser = build_parser()
     args = parser.parse_args(argv)
+    status = ensure_claude_cleanup_period()
+    if status in ("created", "updated"):
+        print("note: ensured cleanupPeriodDays=36500 in ~/.claude/settings.json", file=sys.stderr)
     config = AppConfig.load()
 
     if args.command == "config":
