@@ -210,7 +210,7 @@ def cmd_config_reset_path(args, config: AppConfig) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog=PROG, description="Manage Claude Code / Qwen Code / codewhale-tui / opencode conversations from the terminal.")
+    parser = argparse.ArgumentParser(prog=PROG, description="Manage Claude Code / Qwen Code / codewhale-tui / opencode / Zed conversations from the terminal.")
     sub = parser.add_subparsers(dest="command", required=True)
 
     def add_override_args(p):
@@ -218,6 +218,7 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--qwen-dir", help="override Qwen Code storage dir for this run")
         p.add_argument("--codewhale-dir", help="override codewhale-tui storage dir for this run")
         p.add_argument("--opencode-dir", help="override opencode data dir for this run")
+        p.add_argument("--zed-dir", help="override Zed data dir for this run")
 
     p_list = sub.add_parser("list", help="list conversations")
     p_list.add_argument("--tool", choices=[c.tool_id for c in get_adapter_classes()])
@@ -287,6 +288,7 @@ def main(argv: list[str] | None = None) -> int:
         "qwen_code": getattr(args, "qwen_dir", None),
         "codewhale_tui": getattr(args, "codewhale_dir", None),
         "opencode": getattr(args, "opencode_dir", None),
+        "zed": getattr(args, "zed_dir", None),
     }
     service = build_service(config, overrides)
 

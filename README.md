@@ -1,6 +1,6 @@
 # Agents Chat List Manager (CLI)
 
-A terminal / SSH-friendly app for managing Claude Code, Qwen Code, codewhale-tui, and opencode conversation history not only
+A terminal / SSH-friendly app for managing Claude Code, Qwen Code, codewhale-tui, opencode, and Zed agent conversation history not only
 on your computer but also remotely on servers via ssh.
 
 It is based on the GUI version
@@ -47,12 +47,12 @@ dependency), for browsing over SSH without memorizing session IDs:
 | `Enter` | view the selected conversation's transcript |
 | `d` | delete the selected conversation (asks `[y/N]` first) |
 | `/` | search by title/project substring |
-| `t` | cycle the tool filter (All → claude_code → qwen_code → codewhale_tui → opencode → All) |
+| `t` | cycle the tool filter (All → claude_code → qwen_code → codewhale_tui → opencode → zed → All) |
 | `e` | export the selected conversation (prompts for output path) |
 | `r` | rescan |
 | `q` | quit (in the transcript view, `q` or `←` goes back to the list) |
 
-Same `--claude-dir`/`--qwen-dir`/`--codewhale-dir`/`--opencode-dir` one-off overrides work here
+Same `--claude-dir`/`--qwen-dir`/`--codewhale-dir`/`--opencode-dir`/`--zed-dir` one-off overrides work here
 too, e.g. `chatlistctl browse --qwen-dir /data/qwen-home`.
 
 `<id>` accepts a full `tool_id:session_id`, a bare `session_id`, or an
@@ -62,7 +62,7 @@ Every command that reads/writes conversations also accepts one-off overrides
 for that invocation, without touching persisted config:
 
 ```
---claude-dir PATH  --qwen-dir PATH  --codewhale-dir PATH  --opencode-dir PATH
+--claude-dir PATH  --qwen-dir PATH  --codewhale-dir PATH  --opencode-dir PATH  --zed-dir PATH
 ```
 
 Persisted overrides (`chatlistctl config set-path ...`) are stored the same
@@ -97,6 +97,10 @@ chatlistctl config set-path qwen_code /data/qwen-home
 # opencode data dir (default: ~/.local/share/opencode, honors $OPENCODE_DATA)
 chatlistctl list --tool opencode
 chatlistctl config set-path opencode /data/opencode-home
+
+# Zed agent threads (default: ~/.local/share/zed/threads/threads.db)
+chatlistctl list --tool zed
+chatlistctl config set-path zed /data/zed-home
 ```
 
 ## Running from source code
@@ -124,10 +128,12 @@ python3 -m unittest discover -s tests -v
 ```
 
 This project has its own self-contained suite (stdlib `unittest`), run
-against fixture files under `tests/fixtures/` plus a synthetic SQLite
-`opencode.db` built in a temp dir for the opencode adapter — no GUI project
-checkout and no real `~/.claude` / `~/.qwen` / `~/.codewhale` /
-`~/.local/share/opencode` data required. It mirrors
+against fixture files under `tests/fixtures/` plus synthetic SQLite
+`opencode.db` / `threads.db` databases built in temp dirs (the Zed fixture is
+a pre-compressed zstd blob; transcript tests skip if the machine has neither
+`libzstd` nor the `zstd` CLI) — no GUI project checkout and no real
+`~/.claude` / `~/.qwen` / `~/.codewhale` / `~/.local/share/opencode` /
+`~/.local/share/zed` data required. It mirrors
 the GUI project's adapter tests but imports from `core/` instead of `app/`,
 so this repo can be developed and tested independently.
 

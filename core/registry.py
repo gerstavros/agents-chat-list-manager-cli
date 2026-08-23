@@ -27,7 +27,7 @@ def discover_adapters() -> None:
     # Explicit imports so registration works inside a frozen/PyInstaller binary too,
     # where modules live in the bundled PYZ archive and pkgutil.iter_modules can't
     # enumerate them via filesystem scanning (it silently finds nothing there).
-    from .adapters import claude_code, codewhale_tui, opencode, qwen_code  # noqa: F401
+    from .adapters import claude_code, codewhale_tui, opencode, qwen_code, zed  # noqa: F401
 
     try:
         for _, name, _ in pkgutil.iter_modules(adapters_pkg.__path__):

@@ -8,10 +8,10 @@ from core.config import AppConfig
 
 
 class RegistryTest(unittest.TestCase):
-    def test_discover_adapters_registers_all_four_builtin_tools(self):
+    def test_discover_adapters_registers_all_five_builtin_tools(self):
         classes = registry.get_adapter_classes()
         tool_ids = {cls.tool_id for cls in classes}
-        self.assertEqual(tool_ids, {"claude_code", "qwen_code", "codewhale_tui", "opencode"})
+        self.assertEqual(tool_ids, {"claude_code", "qwen_code", "codewhale_tui", "opencode", "zed"})
         for cls in classes:
             self.assertTrue(issubclass(cls, ToolAdapter))
 
