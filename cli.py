@@ -210,11 +210,12 @@ def cmd_config_reset_path(args, config: AppConfig) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog=PROG, description="Manage Claude Code / Qwen Code / codewhale-tui / opencode / Zed conversations from the terminal.")
+    parser = argparse.ArgumentParser(prog=PROG, description="Manage Claude Code / Codex / Qwen Code / codewhale-tui / opencode / Zed conversations from the terminal.")
     sub = parser.add_subparsers(dest="command", required=True)
 
     def add_override_args(p):
         p.add_argument("--claude-dir", help="override Claude Code storage dir for this run")
+        p.add_argument("--codex-dir", help="override Codex home dir (CODEX_HOME) for this run")
         p.add_argument("--qwen-dir", help="override Qwen Code storage dir for this run")
         p.add_argument("--codewhale-dir", help="override codewhale-tui storage dir for this run")
         p.add_argument("--opencode-dir", help="override opencode data dir for this run")
@@ -285,6 +286,7 @@ def main(argv: list[str] | None = None) -> int:
 
     overrides = {
         "claude_code": getattr(args, "claude_dir", None),
+        "codex": getattr(args, "codex_dir", None),
         "qwen_code": getattr(args, "qwen_dir", None),
         "codewhale_tui": getattr(args, "codewhale_dir", None),
         "opencode": getattr(args, "opencode_dir", None),
