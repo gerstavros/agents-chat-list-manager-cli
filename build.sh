@@ -18,6 +18,8 @@ python -m PyInstaller --onefile --name chatlistctl --clean --noconfirm \
     --hidden-import core.adapters.claude_code \
     --hidden-import core.adapters.qwen_code \
     --hidden-import core.adapters.codewhale_tui \
+    --hidden-import core.adapters.opencode \
+    --hidden-import core.adapters.zed \
     cli.py
 
 echo

@@ -28,6 +28,7 @@ def get_config_dir() -> Path:
 @dataclass
 class AppConfig:
     language: str = "en"
+    appearance: str = "dark"  # "dark" | "light" — UI theme mode (GUI only)
     path_overrides: dict[str, str] = field(default_factory=dict)
 
     @classmethod
@@ -42,6 +43,7 @@ class AppConfig:
             return cls()
         return cls(
             language=data.get("language", "en"),
+            appearance=data.get("appearance", "dark"),
             path_overrides=dict(data.get("path_overrides", {})),
         )
 
