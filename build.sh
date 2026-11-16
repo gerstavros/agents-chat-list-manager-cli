@@ -14,14 +14,12 @@ source .buildenv/bin/activate
 pip install --quiet --upgrade pip
 pip install --quiet -r requirements-build.txt
 
-python -m PyInstaller --onefile --name chatlistctl --clean --noconfirm \
-    --hidden-import core.adapters.claude_code \
-    --hidden-import core.adapters.codex \
-    --hidden-import core.adapters.qwen_code \
-    --hidden-import core.adapters.codewhale_tui \
-    --hidden-import core.adapters.opencode \
-    --hidden-import core.adapters.zed \
-    cli.py
+# Build from the checked-in spec, not from CLI flags: PyInstaller rewrites
+# <name>.spec on every flag-based run, which would silently discard the
+# hand-maintained `_SYSTEM_LIB_EXCLUDES` fix in that spec (older-glibc servers
+# can't load the build machine's newer libz/libbz2). The spec already carries
+# every adapter as a hidden import, so it is the single source of truth.
+python -m PyInstaller --clean --noconfirm chatlistctl.spec
 
 echo
 echo "Built: dist/chatlistctl"
